@@ -5,10 +5,45 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Recipe Book</title>
         <link rel="stylesheet" href="/styles/normalize.css" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap"
+            rel="stylesheet"
+        />
         <link rel="stylesheet" href="/styles/styles.css" />
     </head>
     <body>
-        <h1>test</h1>
+        <header class="header">
+            <div class="container">
+                <h1 class="header__title">Welcome in the Recipe Book!</h1>
+                <h2 class="header__subtitle">
+                    What would you like to eat today?
+                </h2>
+            </div>
+        </header>
+
+        <div class="actions">
+            <div class="actions__container">
+                <input
+                    type="text"
+                    id="title"
+                    class="input input--rounded"
+                    placeholder="Title"
+                />
+                <input
+                    type="text"
+                    id="instructions"
+                    class="input input--rounded"
+                    placeholder="Instructions"
+                />
+                <button id="create-recipe" class="button button--primary">
+                    Create recipe
+                </button>
+            </div>
+        </div>
+
+        <div class="container">
+            <main class="recipes"></main>
+        </div>
         <script src="/scripts/bundle.js"></script>
     </body>
 </html>

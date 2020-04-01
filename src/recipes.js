@@ -18,11 +18,11 @@ const saveRecipes = () => {
 const fetchRecipes = () => recipes;
 
 // Create an empty new recipe
-const createRecipe = () => {
+const createRecipe = (title = "", instructions = "") => {
     const newRecipe = {
         _id: uuidv4(),
-        title: "",
-        instructions: "",
+        title,
+        instructions,
         ingredients: [],
         createdAt: moment().valueOf(),
         updatedAt: moment().valueOf()
@@ -54,6 +54,7 @@ const updateRecipe = (recipeId, updates) => {
 
 // Remove a recipe with a given recipeId: both locally and in localStorage
 const removeRecipe = recipeId => {
+    console.log(recipeId);
     const recipeIndex = recipes.findIndex(recipe => recipe._id === recipeId);
     if (recipeIndex > -1) {
         // If such recipe actually exists

@@ -1,3 +1,111 @@
+* {
+    box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+}
+
 body {
-    background-color: red;
+    background: #000000; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+        to right,
+        #434343,
+        #000000
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+        to right,
+        #434343,
+        #000000
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    font-family: "Lato", sans-serif;
+    font-size: 62.5%;
+    color: #fff;
+}
+
+.container {
+    max-width: 60rem;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.header {
+    padding: 2rem 0;
+}
+
+.header__title {
+    font-weight: 700;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.header__subtitle {
+    font-weight: 400;
+    font-size: 1.25rem;
+}
+
+.actions {
+    background: #3c3b3f; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+        to right,
+        #605c3c,
+        #3c3b3f
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+        to right,
+        #605c3c,
+        #3c3b3f
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    padding: 2rem 0;
+}
+
+.actions__container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.recipes {
+    padding: 2rem 0;
+    font-size: 1rem;
+}
+
+.input {
+    padding: 0.4rem;
+    font-size: 1rem;
+    margin-right: 1rem;
+}
+
+.input:focus {
+    outline: none;
+    box-shadow: 0 0 3pt 2pt gray;
+}
+
+.input--rounded {
+    border: none;
+    border-radius: 0.5rem;
+}
+
+.button {
+    padding: 0.4rem;
+    font-size: 1rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: grey;
+    color: #fff;
+    cursor: pointer;
+}
+
+.button--primary {
+    background-color: darkkhaki;
+}
+
+.button--danger {
+    background-color: darkred;
 }
