@@ -1,0 +1,40 @@
+{
+    "name": "recipe-book",
+    "version": "1.0.0",
+    "description": "An application for browsing recipes",
+    "main": "/src/index.js",
+    "scripts": {
+        "dev-server": "webpack-dev-server --mode development",
+        "build": "webpack --mode production"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/beneckimateusz/recipe-book.git"
+    },
+    "keywords": [
+        "recipe",
+        "recipes",
+        "kitchen",
+        "culinary",
+        "ingredients",
+        "browser",
+        "crud"
+    ],
+    "author": "Mateusz Benecki",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/beneckimateusz/recipe-book/issues"
+    },
+    "homepage": "https://github.com/beneckimateusz/recipe-book#readme",
+    "dependencies": {
+        "@babel/core": "^7.9.0",
+        "@babel/preset-env": "^7.9.0",
+        "babel": "^6.23.0",
+        "babel-loader": "^8.1.0",
+        "moment": "^2.24.0",
+        "uuid": "^7.0.3",
+        "webpack": "^4.42.1",
+        "webpack-cli": "^3.3.11",
+        "webpack-dev-server": "^3.10.3"
+    }
+}
