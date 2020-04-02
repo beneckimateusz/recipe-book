@@ -19,23 +19,24 @@ const generateLastEdited = timestamp => {
 // Create a new div with a given recipe details
 const generateRecipeDOM = recipe => {
     const recipeEl = document.createElement("div");
-    recipeEl.classList.add("recpies__recipe");
+    recipeEl.classList.add("recipes__recipe");
     recipeEl.innerHTML = `
-    <p>
-        Title: ${recipe.title}, 
-        createdAt: ${generateCreated(recipe.createdAt)},
-        updatedAt: ${generateLastEdited(recipe.updatedAt)}
-    </p>
+    Title: ${recipe.title}, 
+    createdAt: ${generateCreated(recipe.createdAt)},
+    updatedAt: ${generateLastEdited(recipe.updatedAt)}
     `;
 
-    const removeBtn = document.createElement("button");
-    removeBtn.classList.add("button", "button--danger");
-    removeBtn.textContent = "X";
-    removeBtn.addEventListener("click", e => {
-        removeRecipe(recipe._id);
-        renderRecipes();
+    recipeEl.addEventListener("click", e => {
+        location.assign(`/edit.html#${recipe._id}`);
     });
-    recipeEl.appendChild(removeBtn);
+    // const removeBtn = document.createElement("button");
+    // removeBtn.classList.add("button", "button--danger");
+    // removeBtn.textContent = "X";
+    // removeBtn.addEventListener("click", e => {
+    //     removeRecipe(recipe._id);
+    //     renderRecipes();
+    // });
+    // recipeEl.appendChild(removeBtn);
     return recipeEl;
 };
 
@@ -48,4 +49,20 @@ const renderRecipes = () => {
     });
 };
 
-export { renderRecipes };
+// Initialize edit page with info about specific recipe
+const initializeEditPage = recipeId => {
+    const titleInput = document.querySelector("#title");
+    const instructionsInput = document.querySelector("#instructions");
+
+    const recipes = fetchRecipes();
+    const recipe = recipes.find(recipe => recipe._id === recipeId);
+    if (!recipe) {
+        location.assign("/index.html");
+        return;
+    }
+
+    titleInput.value = recipe.title;
+    instructionsInput.value = recipe.instructions;
+};
+
+export { renderRecipes, initializeEditPage };

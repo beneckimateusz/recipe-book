@@ -23,27 +23,33 @@
 
         <div class="actions">
             <div class="actions__container">
-                <input
-                    type="text"
-                    id="title"
-                    class="input input--rounded"
-                    placeholder="Title"
-                />
-                <input
-                    type="text"
-                    id="instructions"
-                    class="input input--rounded"
-                    placeholder="Instructions"
-                />
-                <button id="create-recipe" class="button button--primary">
-                    Create recipe
+                <button id="go-back" class="button button--primary">
+                    Go back
+                </button>
+                <button id="remove-recipe" class="button button--danger">
+                    Remove recipe
                 </button>
             </div>
         </div>
 
         <div class="container">
-            <main class="recipes"></main>
+            <input
+                type="text"
+                name="title"
+                id="title"
+                class="input input__title input--rounded"
+                placeholder="Title"
+            />
+            <textarea
+                name="instructions"
+                id="instructions"
+                cols="30"
+                rows="10"
+                class="input input__instructions input--rounded"
+                placeholder="Instructions"
+            ></textarea>
         </div>
-        <script src="/scripts/index-bundle.js"></script>
+
+        <script src="/scripts/edit-bundle.js"></script>
     </body>
 </html>

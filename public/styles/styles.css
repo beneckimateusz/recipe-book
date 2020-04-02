@@ -75,8 +75,20 @@ body {
     font-size: 1rem;
 }
 
+.recipes__recipe {
+    padding: 1rem;
+    background-color: rgb(128, 128, 128);
+    margin-bottom: 1rem;
+    cursor: pointer;
+    transition: background-color 0.4s ease-in-out;
+}
+
+.recipes__recipe:hover {
+    background-color: rgba(128, 128, 128, 0.6);
+}
+
 .input {
-    padding: 0.4rem;
+    padding: 0.8rem;
     font-size: 1rem;
     margin-right: 1rem;
 }
@@ -91,8 +103,21 @@ body {
     border-radius: 0.5rem;
 }
 
+.input__title {
+    display: block;
+    margin: 1.6rem auto;
+    font-size: 2rem;
+    width: 90%;
+}
+
+.input__instructions {
+    display: block;
+    font-size: 1.8em;
+    width: 100%;
+}
+
 .button {
-    padding: 0.4rem;
+    padding: 0.8rem;
     font-size: 1rem;
     font-weight: 700;
     border: none;
@@ -108,4 +133,8 @@ body {
 
 .button--danger {
     background-color: darkred;
+}
+
+.form {
+    padding: 2rem 0;
 }
