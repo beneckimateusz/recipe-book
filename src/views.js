@@ -1,12 +1,9 @@
-import {
-    fetchRecipes,
-    createRecipe,
-    updateRecipe,
-    removeRecipe
-} from "./recipes";
+import { fetchRecipes, getRecipe } from "./recipes";
+import { removeIngredient } from "./ingredients";
 import moment from "moment";
 
 const recipesEl = document.querySelector(".recipes");
+const ingredientsEl = document.querySelector(".ingredients");
 
 const generateCreated = timestamp => {
     return `Created ${moment(timestamp).fromNow()}`;
@@ -29,14 +26,6 @@ const generateRecipeDOM = recipe => {
     recipeEl.addEventListener("click", e => {
         location.assign(`/edit.html#${recipe._id}`);
     });
-    // const removeBtn = document.createElement("button");
-    // removeBtn.classList.add("button", "button--danger");
-    // removeBtn.textContent = "X";
-    // removeBtn.addEventListener("click", e => {
-    //     removeRecipe(recipe._id);
-    //     renderRecipes();
-    // });
-    // recipeEl.appendChild(removeBtn);
     return recipeEl;
 };
 
@@ -49,13 +38,41 @@ const renderRecipes = () => {
     });
 };
 
+const generateIngredientDOM = (recipeId, ingredient) => {
+    const ingredientEl = document.createElement("div");
+    ingredientEl.classList.add("ingredients__ingredient");
+    ingredientEl.innerHTML = `
+    <p>${ingredient.name}</p>
+    `;
+
+    const removeBtn = document.createElement("button");
+    removeBtn.classList.add("button", "button--danger");
+    removeBtn.textContent = "X";
+    removeBtn.addEventListener("click", e => {
+        removeIngredient(recipeId, ingredient.name);
+    });
+    ingredientEl.appendChild(removeBtn);
+
+    return ingredientEl;
+};
+
+const renderIngredients = recipeId => {
+    ingredientsEl.innerHTML = "";
+
+    const recipe = getRecipe(recipeId);
+    recipe.ingredients.forEach(ingredient => {
+        ingredientsEl.appendChild(
+            generateIngredientDOM(recipe._id, ingredient)
+        );
+    });
+};
+
 // Initialize edit page with info about specific recipe
 const initializeEditPage = recipeId => {
     const titleInput = document.querySelector("#title");
     const instructionsInput = document.querySelector("#instructions");
 
-    const recipes = fetchRecipes();
-    const recipe = recipes.find(recipe => recipe._id === recipeId);
+    const recipe = getRecipe(recipeId);
     if (!recipe) {
         location.assign("/index.html");
         return;
@@ -63,6 +80,7 @@ const initializeEditPage = recipeId => {
 
     titleInput.value = recipe.title;
     instructionsInput.value = recipe.instructions;
+    renderIngredients(recipeId);
 };
 
-export { renderRecipes, initializeEditPage };
+export { renderRecipes, initializeEditPage, renderIngredients };

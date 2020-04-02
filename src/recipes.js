@@ -14,8 +14,11 @@ const saveRecipes = () => {
     localStorage.setItem("recipes", JSON.stringify(recipes));
 };
 
-// Fetch recipes for external use
+// Fetch all of the recipes for external use
 const fetchRecipes = () => recipes;
+
+// Fetch a specific recipe for external use
+const getRecipe = recipeId => recipes.find(recipe => recipe._id === recipeId);
 
 // Create an empty new recipe
 const createRecipe = (title = "", instructions = "") => {
@@ -66,4 +69,11 @@ const removeRecipe = recipeId => {
 // Perform the initial load
 loadRecipes();
 
-export { fetchRecipes, createRecipe, updateRecipe, removeRecipe };
+export {
+    fetchRecipes,
+    getRecipe,
+    createRecipe,
+    updateRecipe,
+    removeRecipe,
+    saveRecipes
+};
