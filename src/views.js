@@ -1,20 +1,20 @@
-import { fetchRecipes, getRecipe } from "./recipes";
+import { fetchRecipes, getRecipe, saveRecipes } from "./recipes";
 import { removeIngredient } from "./ingredients";
 import moment from "moment";
 
 const recipesEl = document.querySelector(".recipes");
 const ingredientsEl = document.querySelector(".ingredients");
 
-const generateCreated = timestamp => {
+const generateCreated = (timestamp) => {
     return `Created ${moment(timestamp).fromNow()}`;
 };
 
-const generateLastEdited = timestamp => {
+const generateLastEdited = (timestamp) => {
     return `Last edited ${moment(timestamp).fromNow()}`;
 };
 
-// Create a new div with a given recipe details
-const generateRecipeDOM = recipe => {
+// Create a new div with given recipe details
+const generateRecipeDOM = (recipe) => {
     const recipeEl = document.createElement("div");
     recipeEl.classList.add("recipes__recipe");
     recipeEl.innerHTML = `
@@ -23,52 +23,64 @@ const generateRecipeDOM = recipe => {
     updatedAt: ${generateLastEdited(recipe.updatedAt)}
     `;
 
-    recipeEl.addEventListener("click", e => {
+    recipeEl.addEventListener("click", (e) => {
         location.assign(`/edit.html#${recipe._id}`);
     });
     return recipeEl;
 };
 
-// Render stored recpies and create recipe button
+// Render recipes stored in localStorage and create recipe button
 const renderRecipes = () => {
     recipesEl.innerHTML = ""; // Erase previous content
     const recipes = fetchRecipes();
-    recipes.forEach(recipe => {
+    recipes.forEach((recipe) => {
         recipesEl.appendChild(generateRecipeDOM(recipe));
     });
 };
 
-const generateIngredientDOM = (recipeId, ingredient) => {
+// Create an element representing an ingredient for a given recipe
+const generateIngredientDOM = (recipe, ingredient) => {
     const ingredientEl = document.createElement("div");
     ingredientEl.classList.add("ingredients__ingredient");
     ingredientEl.innerHTML = `
+    <input type="checkbox" name="${ingredient.name}">
     <p>${ingredient.name}</p>
     `;
+
+    const collectedChbox = ingredientEl.querySelector("input");
+    collectedChbox.checked = ingredient.collected;
+    collectedChbox.addEventListener("change", (e) => {
+        ingredient.collected = e.target.checked;
+        saveRecipes();
+    });
 
     const removeBtn = document.createElement("button");
     removeBtn.classList.add("button", "button--danger");
     removeBtn.textContent = "X";
-    removeBtn.addEventListener("click", e => {
-        removeIngredient(recipeId, ingredient.name);
+    removeBtn.addEventListener("click", (e) => {
+        removeIngredient(recipe, ingredient.name);
     });
     ingredientEl.appendChild(removeBtn);
 
     return ingredientEl;
 };
 
-const renderIngredients = recipeId => {
+// Loop through the ingredients for a given recipe and render them to DOM
+const renderIngredients = (recipeId) => {
     ingredientsEl.innerHTML = "";
 
     const recipe = getRecipe(recipeId);
-    recipe.ingredients.forEach(ingredient => {
-        ingredientsEl.appendChild(
-            generateIngredientDOM(recipe._id, ingredient)
-        );
-    });
+    if (recipe) {
+        recipe.ingredients.forEach((ingredient) => {
+            ingredientsEl.appendChild(
+                generateIngredientDOM(recipe, ingredient)
+            );
+        });
+    }
 };
 
-// Initialize edit page with info about specific recipe
-const initializeEditPage = recipeId => {
+// Initialize edit page with title and instructions for the recipe being edited
+const initializeEditPage = (recipeId) => {
     const titleInput = document.querySelector("#title");
     const instructionsInput = document.querySelector("#instructions");
 
@@ -80,7 +92,6 @@ const initializeEditPage = recipeId => {
 
     titleInput.value = recipe.title;
     instructionsInput.value = recipe.instructions;
-    renderIngredients(recipeId);
 };
 
 export { renderRecipes, initializeEditPage, renderIngredients };
