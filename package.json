@@ -1,7 +1,7 @@
 {
     "name": "recipe-book",
     "version": "1.0.0",
-    "description": "An application for browsing recipes",
+    "description": "Simple web application for creating and browsing recipes",
     "main": "/src/index.js",
     "scripts": {
         "dev-server": "webpack-dev-server --mode development",
