@@ -18,17 +18,19 @@ const saveRecipes = () => {
 const fetchRecipes = () => recipes;
 
 // Fetch a specific recipe for external use
-const getRecipe = recipeId => recipes.find(recipe => recipe._id === recipeId);
+const getRecipe = (recipeId) =>
+    recipes.find((recipe) => recipe._id === recipeId);
 
 // Create an empty new recipe
 const createRecipe = (title = "", instructions = "") => {
     const newRecipe = {
         _id: uuidv4(),
         title,
+        image: "/img/placeholder.jpg",
         instructions,
         ingredients: [],
         createdAt: moment().valueOf(),
-        updatedAt: moment().valueOf()
+        updatedAt: moment().valueOf(),
     };
     recipes.push(newRecipe); // Save new recipe locally
     saveRecipes(); // Save new recipe in localStorage
@@ -37,7 +39,7 @@ const createRecipe = (title = "", instructions = "") => {
 
 // Update a recipe with a given recipeId
 const updateRecipe = (recipeId, updates) => {
-    const recipe = recipes.find(recipe => recipe._id === recipeId);
+    const recipe = recipes.find((recipe) => recipe._id === recipeId);
     if (recipe) {
         // If such recipe actually exists
         if (typeof updates.title === "string") {
@@ -50,15 +52,20 @@ const updateRecipe = (recipeId, updates) => {
             recipe.instructions = updates.instructions;
             recipe.updatedAt = moment().valueOf();
         }
+        if (typeof updates.image === "string") {
+            // If image update value was provided
+            recipe.image = updates.image;
+            recipe.updatedAt = moment().valueOf();
+        }
         // TODO: handle ingredients update
         saveRecipes();
     }
 };
 
 // Remove a recipe with a given recipeId: both locally and in localStorage
-const removeRecipe = recipeId => {
+const removeRecipe = (recipeId) => {
     console.log(recipeId);
-    const recipeIndex = recipes.findIndex(recipe => recipe._id === recipeId);
+    const recipeIndex = recipes.findIndex((recipe) => recipe._id === recipeId);
     if (recipeIndex > -1) {
         // If such recipe actually exists
         recipes.splice(recipeIndex, 1);
@@ -75,5 +82,5 @@ export {
     createRecipe,
     updateRecipe,
     removeRecipe,
-    saveRecipes
+    saveRecipes,
 };

@@ -23,43 +23,68 @@
 
         <div class="actions">
             <div class="actions__container">
-                <button id="go-back" class="button button--primary">
-                    Go back
-                </button>
-                <button id="remove-recipe" class="button button--danger">
-                    Remove recipe
+                <div class="timestamps_wrapper">
+                    <p class="createdAt"></p>
+                    <p class="lastEdited"></p>
+                </div>
+                <div class="edit_buttons_wrapper">
+                    <button id="go-back" class="button button--primary">
+                        Go back
+                    </button>
+                    <button id="remove-recipe" class="button button--danger">
+                        Remove recipe
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="edit">
+            <div class="container">
+                <h2 class="edit__label">Title</h2>
+                <input
+                    type="text"
+                    name="title"
+                    id="title"
+                    class="input input__title input--rounded"
+                    placeholder="Title"
+                />
+                <h2 class="edit__label">Image Path/URL</h2>
+                <input
+                    type="text"
+                    name="image"
+                    id="image"
+                    class="input input__title input--rounded"
+                    placeholder="Image Path/URL"
+                />
+                <h2 class="edit__label">Instructions</h2>
+                <textarea
+                    name="instructions"
+                    id="instructions"
+                    cols="30"
+                    rows="10"
+                    class="input input__instructions input--rounded"
+                    placeholder="Instructions"
+                ></textarea>
+                <h2 class="edit__label">Ingredients</h2>
+                <div class="ingredients"></div>
+                <input
+                    type="text"
+                    name="ingredient-name"
+                    id="ingredient-name"
+                    class="input input__ingredient input--rounded"
+                    placeholder="Ingredient name"
+                />
+                <button id="add-ingredient" class="button">
+                    Add
                 </button>
             </div>
         </div>
 
-        <div class="container">
-            <input
-                type="text"
-                name="title"
-                id="title"
-                class="input input__title input--rounded"
-                placeholder="Title"
-            />
-            <textarea
-                name="instructions"
-                id="instructions"
-                cols="30"
-                rows="10"
-                class="input input__instructions input--rounded"
-                placeholder="Instructions"
-            ></textarea>
-            <h1>Ingredients</h1>
-            <div class="ingredients"></div>
-            <input
-                type="text"
-                name="ingredient-name"
-                id="ingredient-name"
-                class="input input--rounded"
-                placeholder="Ingredient name"
-            />
-            <button id="add-ingredient" class="button">Add</button>
-        </div>
-
+        <footer class="footer">
+            Created by
+            <a href="https://github.com/beneckimateusz">Mateusz Benecki</a>
+            &copy; 2020
+        </footer>
         <script src="/scripts/edit-bundle.js"></script>
     </body>
 </html>

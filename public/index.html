@@ -14,7 +14,7 @@
     <body>
         <header class="header">
             <div class="container">
-                <h1 class="header__title">Welcome in the Recipe Book!</h1>
+                <h1 class="header__title">Welcome to the Recipe Book!</h1>
                 <h2 class="header__subtitle">
                     What would you like to eat today?
                 </h2>
@@ -23,15 +23,29 @@
 
         <div class="actions">
             <div class="actions__container">
-                <button id="create-recipe" class="button button--primary">
+                <button
+                    id="create-recipe"
+                    class="button button--primary button--create"
+                >
                     Create recipe
                 </button>
+                <input
+                    type="text"
+                    class="input input--rounded input--search"
+                    placeholder="&#128269; Search"
+                />
             </div>
         </div>
 
-        <div class="container">
-            <main class="recipes"></main>
-        </div>
+        <main class="recipes">
+            <div class="recipes__container"></div>
+        </main>
+
+        <footer class="footer">
+            Created by
+            <a href="https://github.com/beneckimateusz">Mateusz Benecki</a>
+            &copy; 2020
+        </footer>
         <script src="/scripts/index-bundle.js"></script>
     </body>
 </html>

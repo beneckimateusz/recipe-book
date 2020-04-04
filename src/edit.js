@@ -5,6 +5,7 @@ import { addIngredient } from "./ingredients";
 const recipeId = location.hash.substring(1);
 
 const titleInput = document.querySelector("#title");
+const imageInput = document.querySelector("#image");
 const instructionsInput = document.querySelector("#instructions");
 const ingredientInput = document.querySelector("#ingredient-name");
 
@@ -29,6 +30,11 @@ goBackBtn.addEventListener("click", (e) => {
 // Handle title update
 titleInput.addEventListener("input", (e) => {
     updateRecipe(recipeId, { title: e.target.value });
+});
+
+// Handle image update
+imageInput.addEventListener("input", (e) => {
+    updateRecipe(recipeId, { image: e.target.value });
 });
 
 // Handle instructions update

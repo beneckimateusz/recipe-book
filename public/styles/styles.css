@@ -7,7 +7,8 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+p {
     margin: 0;
 }
 
@@ -61,7 +62,7 @@ body {
         #605c3c,
         #3c3b3f
     ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    padding: 2rem 0;
+    padding: 2rem 0.8rem;
 }
 
 .actions__container {
@@ -71,26 +72,91 @@ body {
 }
 
 .recipes {
-    padding: 2rem 0;
+    padding: 2rem;
     font-size: 1rem;
+    max-width: 80rem;
+    margin: 0 auto;
+}
+
+.recipes__container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 
 .recipes__recipe {
-    padding: 1rem;
-    background-color: rgb(128, 128, 128);
-    margin-bottom: 1rem;
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 1rem;
+    color: rgba(0, 0, 0, 0.8);
+    margin-bottom: 1.5rem;
     cursor: pointer;
-    transition: background-color 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+}
+
+.ingredients__ingredient {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: 0.5rem 0.8rem;
+    background-color: rgba(255, 255, 255, 0.95);
+    color: black;
+    border: 1px solid grey;
+    border-radius: 1rem;
+    font-size: 1.3rem;
+}
+
+.recipe__title {
+    padding: 0.5rem 1rem;
+    font-size: 1.75rem;
+}
+
+.recipe__caption {
+    padding: 1rem 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.recipe__bottom {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 1rem;
+    border-top: 1px solid #000;
+}
+
+.image {
+    width: 100%;
+    height: auto;
+    transition: all 0.4s ease-in-out;
+}
+
+.image:hover {
+    opacity: 0.9;
 }
 
 .recipes__recipe:hover {
-    background-color: rgba(128, 128, 128, 0.6);
+    background-color: rgba(255, 255, 255, 0.7);
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.edit {
+    padding: 2rem 0;
+}
+
+.edit__label {
+    font-size: 1.6rem;
+    font-weight: 300;
+    margin-bottom: 0.8rem;
+}
+
+.timestamps_wrapper {
+    font-size: 1.6em;
 }
 
 .input {
     padding: 0.8rem;
     font-size: 1rem;
-    margin-right: 1rem;
 }
 
 .input:focus {
@@ -105,19 +171,26 @@ body {
 
 .input__title {
     display: block;
-    margin: 1.6rem auto;
+    margin: 0 auto 1.3rem auto;
     font-size: 2rem;
     width: 90%;
 }
 
 .input__instructions {
     display: block;
+    margin: 0 auto 1.3rem auto;
     font-size: 1.8em;
     width: 100%;
 }
 
+.input__ingredient {
+    margin: 0.3rem 0.4rem 1rem 0;
+    max-width: 60%;
+}
+
 .button {
     padding: 0.8rem;
+    margin-left: 0.5rem;
     font-size: 1rem;
     font-weight: 700;
     border: none;
@@ -135,6 +208,85 @@ body {
     background-color: darkred;
 }
 
+.button--create {
+    margin-left: 0;
+}
+
 .form {
     padding: 2rem 0;
+}
+
+.footer {
+    text-align: center;
+    font-size: 1.2rem;
+    padding: 1rem 0.5rem;
+
+    background: #3c3b3f; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+        to right,
+        #605c3c,
+        #3c3b3f
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+        to right,
+        #605c3c,
+        #3c3b3f
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.footer > a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.4s ease-in-out;
+}
+
+.footer > a:hover {
+    color: darkkhaki;
+}
+
+@media screen and (max-width: 600px) {
+    .recipes__recipe {
+        flex-basis: 100%;
+    }
+
+    .input__title {
+        font-size: 1.6rem;
+    }
+
+    .input__instructions {
+        font-size: 1rem;
+    }
+
+    .timestamps_wrapper {
+        margin-bottom: 1rem;
+    }
+
+    .input--search {
+        flex-basis: 75%;
+    }
+
+    .button--create {
+        flex-basis: 60%;
+        margin-bottom: 1rem;
+    }
+}
+
+@media screen and (min-width: 600px) {
+    .recipes__recipe {
+        flex-basis: calc(50% - 1em);
+    }
+
+    .footer {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (min-width: 920px) {
+    .recipes__recipe {
+        flex-basis: calc(33% - 1em);
+    }
+
+    .timestamps_wrapper {
+        margin-bottom: 0;
+    }
 }
