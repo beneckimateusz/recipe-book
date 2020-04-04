@@ -12,34 +12,36 @@
         <link rel="stylesheet" href="/styles/styles.css" />
     </head>
     <body>
-        <header class="header">
-            <div class="container">
-                <h1 class="header__title">Welcome to the Recipe Book!</h1>
-                <h2 class="header__subtitle">
-                    What would you like to eat today?
-                </h2>
-            </div>
-        </header>
+        <div class="content">
+            <header class="header">
+                <div class="container">
+                    <h1 class="header__title">Welcome to the Recipe Book!</h1>
+                    <h2 class="header__subtitle">
+                        What would you like to eat today?
+                    </h2>
+                </div>
+            </header>
 
-        <div class="actions">
-            <div class="actions__container">
-                <button
-                    id="create-recipe"
-                    class="button button--primary button--create"
-                >
-                    Create recipe
-                </button>
-                <input
-                    type="text"
-                    class="input input--rounded input--search"
-                    placeholder="&#128269; Search"
-                />
+            <div class="actions">
+                <div class="actions__container">
+                    <button
+                        id="create-recipe"
+                        class="button button--primary button--create"
+                    >
+                        Create recipe
+                    </button>
+                    <input
+                        type="text"
+                        class="input input--rounded input--search"
+                        placeholder="&#128269; Search"
+                    />
+                </div>
             </div>
+
+            <main class="recipes">
+                <div class="recipes__container"></div>
+            </main>
         </div>
-
-        <main class="recipes">
-            <div class="recipes__container"></div>
-        </main>
 
         <footer class="footer">
             Created by
