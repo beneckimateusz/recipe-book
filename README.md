@@ -28,6 +28,6 @@ Live version: [**bm-recipe-book.surge.sh**](https://bm-recipe-book.surge.sh/)
 
 Since data is stored via localStorage, you won't be able to see any recipes until you add some.
 
-![main](main.gif)
+![main](gifs/main.gif)
 
-![main](edit.gif)
+![main](gifs/edit.gif)
