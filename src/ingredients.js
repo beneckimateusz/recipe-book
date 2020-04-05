@@ -14,7 +14,7 @@ const addIngredient = (recipeId, ingredientName) => {
     }
 };
 
-// Add an ingredient from given recipe's ingredients array
+// Remove an ingredient from given recipe's ingredients array
 const removeIngredient = (recipe, ingredientName) => {
     if (recipe) {
         const ingredientIndex = recipe.ingredients.findIndex(
